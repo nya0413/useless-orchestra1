@@ -1,0 +1,10 @@
+{
+  "title": "UseLess Orchestra",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
