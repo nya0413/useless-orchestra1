@@ -1,6 +1,12 @@
 import { useLayoutEffect, useRef, useState, type ReactNode } from 'react';
 
-export const asset = (f: string) => `${import.meta.env.BASE_URL}assets/${f}`;
+export const asset = (f: string) => {
+  const base = import.meta.env.BASE_URL || '/';
+  const cleanF = f.startsWith('/') ? f.slice(1) : f;
+  // 만약 파일 경로에 이미 assets/가 포함되어 있으면 그대로 쓰고, 아니면 assets/를 붙여줍니다
+  const path = cleanF.startsWith('assets/') ? cleanF : `assets/${cleanF}`;
+  return `${base}${path.startsWith('/') ? path.slice(1) : path}`;
+};
 
 type Props = { height: number; children: ReactNode; flow?: boolean; width?: number; fit?: boolean; minScale?: number };
 
